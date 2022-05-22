@@ -20,21 +20,17 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser(user: UserData) {
-    // We are not authorized to delete users but this could be an approach
-    alert('NOT AUTHORIZED');
-
-    // this.userService
-    //   .deleteUser(user)
-    //   .subscribe(() => this.userData.filter((t) => t.id !== t.id));
+    alert('Unhautorized action');
+    this.userService
+      .deleteUser(user)
+      .subscribe(() => this.userData.filter((t) => t.id !== t.id));
   }
 
   toggleStatus(user: UserData) {
     user.status === 'active'
       ? (user.status = 'inactive')
       : (user.status = 'active');
-    //LOCALLY IT WORKS BUT WE'RE NOT AUTHORIZED TO MODIFY DATA ON THE SERVER
-    console.log(user);
-    // this.userService.updateUserStatus(user).subscribe();
+    this.userService.updateUserStatus(user).subscribe();
   }
 
   addUser(user: UserData) {
