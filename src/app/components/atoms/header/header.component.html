@@ -1,4 +1,11 @@
 <header>
-  <span class="font-bold">Registration Form</span>
-  <app-button></app-button>
+  <span class="font-bold">{{ title }}</span>
+  <div>
+    <app-button
+      (btnClick)="toggleClick()"
+      text="Show List"
+      color="{{ showUsersList ? 'red' : 'green' }}"
+      text="{{ showUsersList ? 'Hide' : 'Show' }}"
+    ></app-button>
+  </div>
 </header>

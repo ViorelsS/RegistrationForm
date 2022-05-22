@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 import { UserData } from 'src/app/interfaces/user-data';
+import { UiService } from 'src/app/services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -10,8 +12,14 @@ import { UserData } from 'src/app/interfaces/user-data';
 })
 export class UsersComponent implements OnInit {
   userData: UserData[] = [];
+  showUsersList: boolean = false;
+  subscription: Subscription;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private uiService: UiService) {
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showUsersList = value));
+  }
 
   ngOnInit(): void {
     this.userService
