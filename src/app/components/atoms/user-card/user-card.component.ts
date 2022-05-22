@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { UserData } from 'src/app/interfaces/user-data';
-import { USERS } from 'src/app/mock-data';
 
 @Component({
   selector: 'app-user-card',
@@ -10,8 +9,18 @@ import { USERS } from 'src/app/mock-data';
 })
 export class UserCardComponent implements OnInit {
   @Input() user!: UserData;
+  @Output() onDeleteUser: EventEmitter<UserData> = new EventEmitter();
+  @Output() onToggleStatus: EventEmitter<UserData> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onDelete(user: UserData) {
+    this.onDeleteUser.emit(user);
+  }
+
+  onToggle(user: UserData) {
+    this.onToggleStatus.emit(user);
+  }
 }

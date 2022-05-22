@@ -1,1 +1,8 @@
-<app-user-card *ngFor="let user of userData" [user]="user"></app-user-card>
+<app-add-user (onAddUser)="addUser($event)"></app-add-user>
+
+<app-user-card
+  *ngFor="let user of userData"
+  [user]="user"
+  (onDeleteUser)="deleteUser(user)"
+  (onToggleStatus)="toggleStatus(user)"
+></app-user-card>

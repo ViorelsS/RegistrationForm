@@ -1,4 +1,10 @@
-<div class="bg-gray-100 m-2 rounded-md p-2">
+<div
+  class="bg-gray-100 m-2 rounded-md p-2"
+  [ngClass]="{ status: user.status }"
+  (dblclick)="onToggle(user)"
+>
   <h3>{{ user.name }}</h3>
   <p>{{ user.email }}</p>
+  <p>{{ user.status }}</p>
+  <app-button (click)="onDelete(user)" text="delete"></app-button>
 </div>

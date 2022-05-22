@@ -9,6 +9,8 @@ export class ButtonComponent implements OnInit {
   @Input() text!: string;
   @Output() btnClick = new EventEmitter();
 
+  delete = 'delete';
+
   constructor() {}
 
   ngOnInit(): void {}
